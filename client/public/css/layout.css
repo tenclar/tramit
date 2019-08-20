@@ -1,0 +1,59 @@
+
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+     /* Margin bottom by footer height  */
+    margin-bottom: 60px;
+  }
+
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  
+
+
+
+  main > .container {
+        
+        padding: 60px 15px 0;
+        margin-bottom: 100px;
+    
+  }
+  
+  .footer {
+    
+        position: initial; 
+        bottom: 0;
+        width: 100%;
+        /* set the fixed height of the footer here */
+        height: 60px;
+      background-color: #f5f5f5;
+
+  }
+  
+  .footer > .container {
+      padding-right: 15px;
+      padding-left: 15px;
+  }
+  
+  code {
+    font-size: 80%;
+  }
+/* 
+  tbody tr:nth-child(odd){
+    background-color: #F7FBFF;
+  } */
