@@ -166,9 +166,16 @@ class DocLoc extends Component {
                                 <tbody className="mb-2">
                                     {docs.map(doc =>
                                         <tr key={doc.id} >
-                                            <th><input id="documentoId"   type="radio" name="documentoId" onChange={this.onSelect}  className="form-check mx-auto" value={doc}   /></th>
-                                                <th scope="row">{doc.numero}</th>
-                                            <td>{doc.nome}</td>
+                                            <th>
+                                                <input id="documentoId"   
+                                                type="radio" 
+                                                className="form-check mx-auto"
+                                                name="documentoId" 
+                                                onChange={this.onSelect}  
+                                                value={doc}   />
+                                            </th>
+                                            <th scope="row">{doc.numero}</th>
+                                            <th>{doc.nome}</th>
                                             
                                         </tr>
 
