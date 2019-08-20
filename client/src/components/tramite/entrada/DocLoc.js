@@ -9,7 +9,7 @@ import {  docGetFilter } from '../../documento/DocApi'
     msg: '',
     dialog:'',
     setorId: '',
-    documento:{id:0,nome:'',descricao:''},
+    documento:{id:0, numero:'', nome:'', descricao:''},
     isLoad: false,
     setores: [],
     doctipos: [],
@@ -23,6 +23,7 @@ class DocLoc extends Component {
 
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.onChangeSelect = this.onChangeSelect.bind(this)
         this.onSelect = this.onSelect.bind(this)
         this.onCancel = this.onCancel.bind(this)
     }
@@ -55,18 +56,29 @@ class DocLoc extends Component {
 
     }
 
-    onSelect(e){
+    onChangeSelect(e){
         
-        const documento  = JSON.stringify(e.target.value)
+       const doc = JSON.parse(e.target.value)
+       const documento = {
+           id:doc.id,
+           numero:doc.numero,
+           nome: doc.nome,
+           descricao: doc.descricao 
+       }
+
+       this.setState({documento: documento, dialog:'modal' })
        
-        console.log(documento)
-         //const docu =  JSON.stringify(documento)
-         //console.log(docu)
-       // this.setState({dialog:'modal',documento:  e.target.value })
-        //console.log(JSON.stringify(this.state.documento))
-        //this.props.selectDocument(this.state.documento)
+        
+       
+        
+      
         
     }
+    onSelect(e){
+        e.preventDefault()
+        this.props.selectDocument(this.state.documento)
+    }
+   
 
     onSubmit(e) {
         e.preventDefault()
@@ -171,8 +183,10 @@ class DocLoc extends Component {
                                                 type="radio" 
                                                 className="form-check mx-auto"
                                                 name="documentoId" 
-                                                onChange={this.onSelect}  
-                                                value={doc}   />
+                                               
+                                                onChange={this.onChangeSelect}
+                                                
+                                                value={JSON.stringify(doc)}   />
                                             </th>
                                             <th scope="row">{doc.numero}</th>
                                             <th>{doc.nome}</th>
@@ -200,12 +214,11 @@ class DocLoc extends Component {
                             <hr className="bg-black" />
 
                         </div>
-                        {JSON.stringify("dialog: "+this.state.dialog )}
-                        {JSON.stringify("documento"+this.state.documento.nome)}
+                
                         
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" onClick={this.onCancel} data-dismiss="modal">Fechar</button>
-                            <button type="button" className="btn btn-primary"  data-dismiss={this.state.dialog} >Selecionar</button>
+                            <button type="button" className="btn btn-primary" onClick={this.onSelect}  data-dismiss={this.state.dialog} >Selecionar</button>
                         </div>
                     </div>
                 </div>

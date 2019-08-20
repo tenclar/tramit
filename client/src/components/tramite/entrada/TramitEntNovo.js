@@ -6,9 +6,10 @@ import DocLoc from './DocLoc'
 
 
 
+
 const initState = {
-    documento:{id:0,nome:'',descricao:''},
-    fields:{},
+    documento:{ id:0, numero:'', nome:'',descricao:''},
+    fields:{datacad:'',acao:'', movimento:'', setorId:0, despacho:'', observacao:''},
     setores:[],
     errors:{}
 }
@@ -89,6 +90,13 @@ class TramitForm extends Component {
       
     }
 
+    selectDocument(documento){
+        let fields = this.state.fields
+        fields.documentoId = documento.id
+        this.setState({ documento:documento,fields  })
+        
+    }
+
     onChange(e){
         e.preventDefault()
         let fields = this.state.fields
@@ -120,9 +128,7 @@ class TramitForm extends Component {
         }
         
     }
-    selectDocument(documento){
-        this.setState({ documento:documento })
-    }
+   
 
     render() {
 
@@ -217,7 +223,7 @@ class TramitForm extends Component {
                                         className="form-control "
                                         name="documentoNumero"
                                         id="documentoNumero"
-                                        placeholder="número do documento"
+                                        
                                         value={this.state.documento.numero}
                                         onChange={this.onChange}
                                     />
@@ -230,7 +236,7 @@ class TramitForm extends Component {
                                         className="form-control "
                                         name="documentoNome"
                                         id="documentoNome"
-                                        placeholder="nome do documento"
+                                        
                                         value={this.state.documento.nome}
                                         onChange={this.onChange}
                                     />
