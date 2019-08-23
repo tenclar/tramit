@@ -139,7 +139,7 @@ class TramitEntList extends Component {
                     <table className="table table-striped table-hover" >
                         <thead className="thead-dark">
                             <tr>
-                                <th className="mx-auto" style={{width:'10%'}} ><a className="btn btn-primary" href="/tramite/entrada/novo"><i className="fas fa-asterisk"></i></a></th>
+                                <th className="mx-auto" style={{width:'10%'}} ><a className="btn btn-primary" href="/tramite/novo"><i className="fas fa-asterisk"></i></a></th>
                                 <th scope="col">#</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Descrição</th>

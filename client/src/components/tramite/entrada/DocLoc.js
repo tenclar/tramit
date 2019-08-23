@@ -114,12 +114,12 @@ class DocLoc extends Component {
 
 
 
-                            <form noValidate onSubmit={this.onSubmit} className="row form mt-4 ">
+                            <form noValidate onSubmit={this.onSubmit} className="row form mt-1 ">
 
                                 <div className=" form-group  col-md-2   mb-2">
                                     <label htmlFor="setorId">Setor</label>
                                     <select id="setorId" required
-                                        className="custom-select  custom-select-lg"
+                                        className="custom-select  "
                                         name="setorId"
                                         value={this.state.args.setorId}
                                         onChange={this.onChange}
@@ -133,7 +133,7 @@ class DocLoc extends Component {
                                 </div>   <div className=" form-group  col-md-2   mb-2">
                                     <label htmlFor="tipodocId">Tipo Doc.</label>
                                     <select id="tipodocId" required
-                                        className="custom-select  custom-select-lg"
+                                        className="custom-select  "
                                         name="tipodocId"
                                         value={this.state.args.tipodocId}
                                         onChange={this.onChange}
@@ -153,11 +153,11 @@ class DocLoc extends Component {
                                         name="arg"
                                         onChange={this.onChange}
                                         value={this.state.args.arg}
-                                        className="form-control form-control-lg"
+                                        className="form-control "
                                         placeholder="Informe o nome documento" />
                                 </div>
 
-                                <button type="submit" id="btarg" className="btn btn-primary col-md-1 mt-4 mb-2"><i className="fas fa-search"></i></button>
+                                <button type="submit" id="btarg" className="btn btn-primary col-md-1 mt-4 mb-3"><i className="fas fa-search"></i></button>
 
                             </form>
                             {JSON.stringify(this.state.args)}

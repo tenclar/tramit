@@ -28,10 +28,46 @@ router.get('/:arg', async(req, res) => {
     res.send(e)
 })
 
+/* router.get('/acao/:action', async(req, res) => {
+    const e = await Tramitacao.findAll({
+        
+        attributes: [
+            [Sequelize.fn('MAX', Sequelize.col('acao')), 'max']
+        ], raw:true   
+    })
+    
+    res.send(e)
+}) */
+
+/* router.get('/acao/:action', async(req, res) => {
+    const e = await Tramitacao.findAll({
+        where: Sequelize.where(Sequelize.fn('MAX', Sequelize.col('acao')), req.params.action)
+        
+    })
+    
+    res.send(e)
+})
+ */
+router.get('/acao/:action', async(req, res) => {
+    const e = await Tramitacao.findAll({
+        where:{
+            acao:{
+                    [Op.and]: [ req.params.action,
+                     [Sequelize.literal('SELECT max(acao) AS acao FROM tramitacoes')] 
+                    ]
+            }
+        }
+        
+        
+    })
+    
+    res.send(e)
+})
+ 
 router.post('/novo', (req , res) => {
     const sData = {
         setorId: req.body.setorId,
-        documentod: req.body.documentod,
+        documentoId: req.body.documentoId,
         datacad: req.body.datacad,
         acao: req.body.acao,
         movimento: req.body.movimento,
@@ -39,15 +75,32 @@ router.post('/novo', (req , res) => {
         observacao:req.body.observacao
     }
 
-
-    Tramitacao.create(sData)
-    .then(tramitacao =>{
-        res.json({status: tramitacao.nome + ' cadastrado '})
+    Tramitacao.findOne({
+        where:{
+            acao:{
+                    [Op.and]: [ req.body.acao,
+                     [Sequelize.literal('SELECT max(acao) AS acao FROM tramitacoes')] 
+                    ]
+            }
+        }
+        
+    })
+    .then(tramitacao => {
+        if(!tramitacao){
+            Tramitacao.create(sData)
+            .then(tramitacao =>{
+                res.json({status: tramitacao.acao + ' cadastrado '})
+            })
+            .catch(err => {
+                res.send('error: '+err)
+            })
+        } else{
+            res.json({error: tramitacao.acao + ' Já existe para o documento'})
+        }
     })
     .catch(err => {
-        res.send('error: '+err)
+        res.send('error: '+ err)
     })
-
     
 })
 

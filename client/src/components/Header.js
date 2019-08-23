@@ -22,10 +22,10 @@ class Header extends Component {
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="@" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Trâmite</a>
                             <div className="dropdown-menu" aria-labelledby="dropdown05">
-                                <a className="dropdown-item" href="/documentos"><i className="fas fa-file-invoice"></i> Documento</a>
-                                <a className="dropdown-item" href="/tramite/entrada"><i className="fas fa-angle-double-left"></i> Entrada</a>
+                                <a className="dropdown-item" href="documentos"><i className="fas fa-file-invoice"></i> Documento</a>
+                                <a className="dropdown-item" href="/tramite/novo"><i className="fas fa-angle-double-left"></i>  <i className="fas fa-angle-double-right"></i> Entrada - Saida</a>
                                 <a className="dropdown-item" href="/tramite/analisar"><i className="fas fa-file-contract" ></i> Analisar</a>
-                                <a className="dropdown-item" href="/tramite/saida"><i className="fas fa-angle-double-right"></i> Saida</a>
+                                
                             </div>
                         </li>
                         {/* 

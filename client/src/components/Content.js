@@ -36,7 +36,7 @@ class Content extends Component {
             <Route exact path='/' component={Home} />
             <Route exact path='/setores/novo' component={SetorForm} />
             <Route exact path='/setores/editar/:id' component={SetorEdit} />
-            <Route exact path='/setores' component={SetorList} />  
+            <Route exact path='setores' component={SetorList} />  
 
             <Route exact path='/usuarios/editar/:id' component={UsuarioEdit} />
             <Route exact path='/usuarios/novo' component={UsuarioForm} />
@@ -50,7 +50,7 @@ class Content extends Component {
             <Route exact path='/doctipos/novo' component={DoctipoForm} /> 
             <Route exact path='/doctipos/editar/:id' component={DoctipoEdit} />
             
-            <Route exact path='/tramite/entrada' component={TramitEntNovo} />
+            <Route exact path='/tramite/novo' component={TramitEntNovo} />
             
             <Route exact path='/tramite/analisar' component={TramitList} />
            

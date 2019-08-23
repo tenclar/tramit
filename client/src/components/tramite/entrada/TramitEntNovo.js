@@ -11,7 +11,8 @@ const initState = {
     documento:{ id:0, numero:'', nome:'',descricao:''},
     fields:{datacad:'',acao:'', movimento:'', setorId:0, despacho:'', observacao:''},
     setores:[],
-    errors:{}
+    errors:{},
+    msg:''
 }
 
 class TramitForm extends Component {
@@ -20,6 +21,7 @@ class TramitForm extends Component {
         super(props)
         this.state = initState
 
+        this.onChangeDoc = this.onChangeDoc.bind(this)
         this.onChange = this.onChange.bind(this)
         this.onCancel = this.onCancel.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -31,6 +33,7 @@ class TramitForm extends Component {
     
     validateForm(){
         let fields = this.state.fields
+        let documento = this.state.documento
         let errors = {}
 
         let formIsValid = true
@@ -38,36 +41,37 @@ class TramitForm extends Component {
         if (!fields["setorId"]) {
             formIsValid = false            
             errors["setorId"] = "Selecione Um setor "
-            
+            console.log('Setor '+formIsValid)
           }
         
-        if (!fields["documentoId"]) {
+      
+        if (!documento["nome"]) {
             formIsValid = false            
-            errors["documentoId"] = "Por Favor, Selecione um Documento . "
-            
+            errors["documentoNome"] = "Por Favor, Selecione um Documento . "
+            console.log('documento '+formIsValid)
         }
         if (!fields["datacad"]) {
             formIsValid = false            
             errors["datacad"] = "Por Favor, Informe a data. "
-            
+            console.log('data '+formIsValid)
         }
         if (!fields["acao"]) {
           formIsValid = false            
           errors["acao"] = "Por Favor,  Defina uma Ação "
-          
+          console.log('acao '+formIsValid)
         }
 
         if (!fields["movimento"]) {
             formIsValid = false            
             errors["movimento"] = "Por Favor,  Defina Origem ou Destino "
-            
+            console.log('movimento '+formIsValid)
           }
 
           
         if (!fields["despacho"]) {
             formIsValid = false            
             errors["despacho"] = "Por Favor,  Escreva o despacho  "
-            
+            console.log('despacho '+formIsValid)
           }
         
 
@@ -96,7 +100,13 @@ class TramitForm extends Component {
         this.setState({ documento:documento,fields  })
         
     }
-
+    onChangeDoc(e){
+        e.preventDefault()
+        let documento = this.state.documento
+        documento[e.target.name] = e.target.value
+        this.setState({documento})
+       
+    }
     onChange(e){
         e.preventDefault()
         let fields = this.state.fields
@@ -116,10 +126,11 @@ class TramitForm extends Component {
              
            
             tramitNovo(this.state.fields).then(res => {
-                this.setState= initState
+                
                 if(res.error){
                     this.setState({msg:res.error})
                 }else{                  
+                    this.setState(initState)
                     this.props.history.push('/tramite/analisar')
                 }              
                 
@@ -132,7 +143,7 @@ class TramitForm extends Component {
 
     render() {
 
-        const {  errors, setores} = this.state
+        const {  msg, errors, setores} = this.state
         return (
            <div>
 
@@ -140,12 +151,12 @@ class TramitForm extends Component {
                 <div className="container">
 
                     <h1 className="page-header ">
-                        <i className="far fa-list-alt"></i> Formulário de Cadastro de Tramitação - ENTRADA
+                        <i className="far fa-list-alt"></i> Formulário de Cadastro de Tramitação
                         </h1>
                     <hr className="bg-primary" />
 
 
-
+                    <div className="  alert-danger text-center rounded mb-3 " >{ msg }</div>
                     <div className="card">
                         <div className="card-header font-weight-bold ">
                             Dados de Entrada de Documento
@@ -216,32 +227,35 @@ class TramitForm extends Component {
                                     </div>
                                 </div>
                                  <div className="form-row">
-                                 <div className={errors.documentoNumero !== undefined ? "form-group col-md-1 was-validated " : "form-group col-md-1"}>
+                                 <div className="form-group col-md-2">
                                     <label htmlFor="documentoNumero">Número</label>
                                     <input type="text" required
                                         autoComplete="off" readOnly={true}
-                                        className="form-control "
+                                        className="form-control"
                                         name="documentoNumero"
                                         id="documentoNumero"
                                         
                                         value={this.state.documento.numero}
-                                        onChange={this.onChange}
-                                    />
-                                    <div className="invalid-feedback">{errors.documentoNumero}</div>
-                                </div>
-                                <div className={errors.documentoNome !== undefined ? "form-group col-md-9 was-validated " : "form-group col-md-9"}>
-                                    <label htmlFor="documentoNome">Documento</label>
-                                    <input type="text" required
-                                        autoComplete="off" readOnly={true}
-                                        className="form-control "
-                                        name="documentoNome"
-                                        id="documentoNome"
                                         
-                                        value={this.state.documento.nome}
-                                        onChange={this.onChange}
                                     />
-                                    <div className="invalid-feedback">{errors.documentoNome}</div>
                                 </div>
+                                <div className={errors.documentoNome !== undefined ? "form-group col-md-8 was-validated " : "form-group  col-md-8"}>
+                                    <label htmlFor="nome">Documento</label>
+                                    <input type="text" 
+                                        autoComplete="off" 
+                                        readOnly={true}
+                                        className={errors.documentoNome !== undefined ? "form-control is-invalid": "form-control"}
+                                        name="nome"
+                                        id="nome"
+                                        onChange={this.onChangeDoc}
+                                        value={this.state.documento.nome}
+                                        
+                                    />
+                                    
+                                    <div className="is-invalid invalid-feedback">{errors.documentoNome}</div>
+                                </div>
+                                
+
                                 <div className="col-md-2" >
                                  <div className="mb-2"></div>
                                     <button
@@ -254,6 +268,7 @@ class TramitForm extends Component {
                                      className="btn btn-primary  mt-4  "><i className="fas fa-search"></i> Localizar</button>
                                 </div>
                                 </div>
+                               
                                 <div className={errors.despacho !== undefined ? "form-group was-validated" : "form-group"}>
                                     <label htmlFor="despacho">Despacho</label>
                                     <textarea type="text" required
@@ -284,7 +299,8 @@ class TramitForm extends Component {
 
 
                                 {JSON.stringify(this.state.fields) } <br/>
-                                {JSON.stringify(this.state.documento)}
+                                {JSON.stringify(this.state.documento)} <br />
+                                {JSON.stringify(errors)}
 
                                 <hr className="bg-default" />
                                 <button type="submit" className="btn btn-primary mr-1"  >Salvar</button>

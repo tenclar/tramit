@@ -4,11 +4,14 @@ import axios from 'axios'
 const tramitNovo = novo =>{
     return axios
     .post('/tramitacoes/novo', {
-        tipodocId:novo.tipodocId,
+        
         setorId:novo.setorId,
-        numero:novo.numero,
-        nome: novo.nome,
-        descricao: novo.descricao
+        documentoId:novo.documentoId,
+        datacad:novo.datacad,
+        acao:novo.acao,
+        movimento:novo.movimento,
+        despacho:novo.despacho,
+        observacao:novo.observacao
     })
     .then(res => {
         return res.data
