@@ -2,11 +2,11 @@
   "name": "tramit",
   "version": "1.0.0",
   "description": "Tramitação de Documentos\r Sistema é utilizado para acompanhar documentos que tramitam entre setores acompanhando despachos efetivados, datas de entrada e saida inclusão de anexos.",
-  "main": "server.js",
+  "main": "tramit.js",
   "scripts": {
     "client": "cd client && npm start",
-    "server": " nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "server": " nodemon tramit.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run tramit\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
