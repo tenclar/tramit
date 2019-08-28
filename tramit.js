@@ -9,6 +9,7 @@ app.use(bodyParser.json({extended:true}))
 app.use(bodyParser.urlencoded({extended:false}))
 
 
+
 const Usuarios = require('./routes/UsuarioRoute')
 app.use('/usuarios', Usuarios)
 
