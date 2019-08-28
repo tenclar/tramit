@@ -4,7 +4,13 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const cors = require('cors')
 const Documento = require('../models/Documentos')
+const Tramitacao = require('../models/Tramitacoes')
 router.use(cors())
+
+Documento.hasMany(Tramitacao)
+//Tramitacao.belongsTo(Documento)
+//Documento.belongsTo(Tramitacao)
+
 
 
 router.get('/', async(req, res) => {
@@ -14,6 +20,26 @@ router.get('/', async(req, res) => {
 
 router.get('/localiza', async(req, res) => {
     const e = await Documento.findAll()
+    res.send(e)
+})
+
+
+
+router.get('/tramit/:arg', async(req, res) => {
+    const e = await Documento.findAll({
+        where: { [Op.or]:[
+            {nome : {[Op.like]: '%'+req.params.arg+'%'}},
+            {setorId : {[Op.like]: '%'+req.params.arg+'%'}},
+            {tipodocId : {[Op.like]: '%'+req.params.arg+'%'}}
+            ]
+        },
+        include:[
+            {
+                model:Tramitacao              
+            }
+        ] 
+    })
+    
     res.send(e)
 })
 

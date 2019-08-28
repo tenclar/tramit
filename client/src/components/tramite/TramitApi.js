@@ -28,7 +28,7 @@ const tramitGetByNome = arg =>{
 
 const tramitGetFilter = args =>{
     return axios
-    .get('/tramitacoes/'+args.arg)
+    .get('/docs/tramit/'+args.arg)
     .then(res =>{
        return res.data
     

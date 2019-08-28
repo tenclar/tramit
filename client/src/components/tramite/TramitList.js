@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
+import Moment from 'react-moment';
 import { Link } from 'react-router-dom'
 import { setorGet } from '../setor/SetorApi'
 import { doctipoGet } from '../doctipo/DoctipoApi'
-import { tramitGet, tramitGetFilter } from './TramitApi'
+import { tramitGetFilter } from './TramitApi'
+
 
 
 class TramitEntList extends Component {
@@ -35,11 +37,11 @@ class TramitEntList extends Component {
             })
         })
 
-        tramitGet().then( tramitacoes => {
+      /*   tramitGet().then( tramitacoes => {
             this.setState({
                 tramitacoes:tramitacoes
             })
-        })
+        }) */
     }
 
     onChange(e){
@@ -132,34 +134,70 @@ class TramitEntList extends Component {
                         <button type="submit" id="btarg" className="btn btn-primary col-md-1 mt-4 mb-2"><i className="fas fa-search"></i></button>
                        
                         </form>
-                        {JSON.stringify(this.state.args)}
+                      
                         <div className="  alert-danger text-center rounded mb-3 " >{ msg }</div>
                         {this.state.isLoad && <img src="/img/loading.gif" alt='Carregando...' />  }
                     <hr className="bg-danger" />
-                    <table className="table table-striped table-hover" >
+                    <table className="table table-sm table-striped " >
                         <thead className="thead-dark">
                             <tr>
-                                <th className="mx-auto" style={{width:'10%'}} ><a className="btn btn-primary" href="/tramite/novo"><i className="fas fa-asterisk"></i></a></th>
+                                <th className="mx-auto text-center" 
+                                    style={{width:'10%'}} >
+                                    <a className="btn btn-sm btn-primary" 
+                                        href="/tramite/novo" >
+                                        <i className="fas fa-asterisk"></i>
+                                    </a>
+                                </th>
                                 <th scope="col">#</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Descrição</th>
+                                <th scope="col">Número</th>
+                                <th scope="col">Documento</th>
                             </tr>
                         </thead>
-                        <tbody className="mb-2">
-                            {tramitacoes.map(tramit => 
-                                    <tr key={tramit.id} >
-                                        <th><Link className="btn btn-warning" to={"/tramite/entrada/editar/"+tramit.id} ><i className="far fa-edit"></i></Link></th>
+                        {tramitacoes.map(tramit =>  
+                        <tbody   key={tramit.id} >
+                            
+                               
+                                    <tr >
+                                        <th className="mx-auto text-center" style={{width:'10%'}} ><button type="button" 
+                                            className="btn btn-sm  btn-warning"  
+                                            data-toggle="collapse" data-target="#multiCollapse" aria-expanded="false" aria-controls="multiCollapse"
+                                            ><i className="far fa-caret-square-down"></i></button></th>
                                         <th scope="row">{tramit.id}</th>
-                                        <td>{tramit.acao}</td>
-                                        <td>{tramit.movimento}</td>                                
+                                        <td>{tramit.numero}</td>
+                                        <td>{tramit.nome}</td>                                
+                                    </tr>
+                                    <tr className="collapse multi-collapse" id="multiCollapse">
+                                        <td colSpan="4"> 
+                                            <table className="table table-sm table-striped table-hover" >
+                                            <thead className="thead-light" >
+                                                <tr>
+                                                    <th scope="col" className="mx-auto text-center" >#</th>
+                                                    <th scope="col">data</th>
+                                                    <th scope="col">ação</th>
+                                                    <th scope="col">movimento</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="mb-2">
+                                            {tramit.tramitacoes.map(tmt => 
+                                                <tr key={tmt.id}>
+                                                    <td className="mx-auto text-center" ><Link className="btn btn-sm btn-info" to={"/tramite/entrada/view/"+tmt.id} ><i className="far fa-eye"></i></Link></td>
+                                                    
+                                                    <td><Moment format="DD/MM/YYYY">{tmt.datacad}</Moment></td>
+                                                    <td>{tmt.acao}</td>
+                                                    <td>{tmt.movimento}</td>                                
+                                                </tr>
+                                            )}
+                                            </tbody>
+                                            </table>
+                                        </td>
                                     </tr>
                                     
-                                )
-                            }
+                            
                             
                            
                         </tbody>
-                       
+                        )}
+
                      {  /*  <tfoot className="thead-light ">
                        
                         <tr>

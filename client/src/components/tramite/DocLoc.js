@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { setorGet } from '../../setor/SetorApi'
-import { doctipoGet } from '../../doctipo/DoctipoApi'
-import {  docGetFilter } from '../../documento/DocApi'
+import { setorGet } from '../setor/SetorApi'
+import { doctipoGet } from '../doctipo/DoctipoApi'
+import {  docGetFilter } from '../documento/DocApi'
 
  let initState = {
     args: { arg: '', setorId: '', tipodocId: '' },

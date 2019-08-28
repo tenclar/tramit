@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
-import { tramitNovo } from '../TramitApi'
-import { setorGet } from '../../setor/SetorApi'
+import { tramitNovo } from './TramitApi'
+import { setorGet } from '../setor/SetorApi'
 import DocLoc from './DocLoc'
 
 
