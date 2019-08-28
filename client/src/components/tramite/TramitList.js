@@ -133,7 +133,7 @@ class TramitEntList extends Component {
                        
                         <button type="submit" id="btarg" className="btn btn-primary col-md-1 mt-4 mb-2"><i className="fas fa-search"></i></button>
                        
-                        </form>
+                        </form> 
                       
                         <div className="  alert-danger text-center rounded mb-3 " >{ msg }</div>
                         {this.state.isLoad && <img src="/img/loading.gif" alt='Carregando...' />  }
