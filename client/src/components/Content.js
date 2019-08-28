@@ -22,7 +22,8 @@ import DoctipoForm from './doctipo/DoctipoForm'
 import DoctipoEdit from './doctipo/DoctipoEdit'
 
 import TramitList from './tramite/TramitList'
-import TramitEntNovo from './tramite/entrada/TramitEntNovo'
+import TramitNovo from './tramite/TramitNovo'
+import TramitEdit from './tramite/TramitEdit'
 
 
 class Content extends Component {
@@ -50,7 +51,8 @@ class Content extends Component {
             <Route exact path='/doctipos/novo' component={DoctipoForm} /> 
             <Route exact path='/doctipos/editar/:id' component={DoctipoEdit} />
             
-            <Route exact path='/tramite/novo' component={TramitEntNovo} />
+            <Route exact path='/tramite/novo' component={TramitNovo} />
+            <Route exact path='/tramite/editar/:id' component={TramitEdit} />
             
             <Route exact path='/tramite/analisar' component={TramitList} />
            
