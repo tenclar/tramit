@@ -95,7 +95,7 @@ class DocList extends Component {
                         onChange={this.onChange}
                         >
                         <option value='' >Todos</option>
-                        {setores.map(setor => 
+                        { setores.map(setor => 
                            
                             <option key={setor.id} value={setor.id}>{setor.nome}</option>
                         )}
