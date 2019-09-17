@@ -8,23 +8,23 @@ class Header extends Component {
             <header>
                
             <nav className="navbar navbar-expand-md navbar-dark  bg-dark">
-                <Link className="navbar-brand" to="/"><i className="fab fa-accusoft"></i> Tramit .::. <span className="font-weight-bold" >DOC</span></Link>
+                <Link className="navbar-brand" to="/app"><i className="fab fa-accusoft"></i> Tramit .::. <span className="font-weight-bold" >DOC</span></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item ">
-                        <Link className="nav-link" to="/">Painel <span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to="/app">Painel <span className="sr-only">(current)</span></Link>
                         </li>
                        
                         
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="@" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Trâmite</a>
                             <div className="dropdown-menu" aria-labelledby="dropdown05">
-                                <a className="dropdown-item" href="documentos"><i className="fas fa-file-invoice"></i> Documento</a>
-                                <a className="dropdown-item" href="/tramite/novo"><i className="fas fa-angle-double-left"></i>  <i className="fas fa-angle-double-right"></i> Entrada - Saida</a>
-                                <a className="dropdown-item" href="/tramite/analisar"><i className="fas fa-file-contract" ></i> Analisar</a>
+                                <a className="dropdown-item" href="/app/documentos"><i className="fas fa-file-invoice"></i> Documento</a>
+                                <a className="dropdown-item" href="/app/tramite/novo"><i className="fas fa-angle-double-left"></i>  <i className="fas fa-angle-double-right"></i> Entrada - Saida</a>
+                                <a className="dropdown-item" href="/app/tramite/analisar"><i className="fas fa-file-contract" ></i> Analisar</a>
                                 
                             </div>
                         </li>
@@ -40,9 +40,9 @@ class Header extends Component {
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="@" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros</a>
                             <div className="dropdown-menu" aria-labelledby="dropdown05">
-                            <Link className="dropdown-item" to="/doctipos"><i className="fas fa-paste"></i> Tipo Doc</Link>
-                            <a className="dropdown-item" href="/usuarios"><i className="fas fa-users"></i> Usuários</a>
-                            <Link className="dropdown-item" to="/setores"><i className="fas fa-landmark"></i> Setores</Link>
+                            <Link className="dropdown-item" to="/app/doctipos"><i className="fas fa-paste"></i> Tipo Doc</Link>
+                            <Link className="dropdown-item" to="/app/usuarios"><i className="fas fa-users"></i> Usuários</Link>
+                            <Link className="dropdown-item" to="/app/setores"><i className="fas fa-landmark"></i> Setores</Link>
                             
                             </div>
                         </li>
@@ -55,9 +55,9 @@ class Header extends Component {
                         <li className="nav-item dropdown">
                             <button type="button" className="dropdown-toggle btn btn-outline-success "   id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fas fa-user-circle"></i> </button>
                             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown05">
-                            <Link className="dropdown-item" to="/perfil"><i className="fas fa-id-card"></i> Perfil</Link>
+                            <Link className="dropdown-item" to="perfil"><i className="fas fa-id-card"></i> Perfil</Link>
                             <div className="dropdown-divider"></div>
-                             <Link className="dropdown-item" to="/login"><i className="fas fa-door-open"></i> Sair</Link>
+                             <Link className="dropdown-item" to="logout"><i className="fas fa-door-open"></i> Sair</Link>
                             </div>
                         </li>
                     </ul>
