@@ -64,11 +64,34 @@ const usuarioIdGet = id =>{
 
 
 
+ const login = user => {
+    return axios 
+    .post('/auth', {
+        email: user.email,
+        password:user.password
+    })
+    .then(res => {
+        
+        localStorage.setItem('usertoken', res.data)
+       
+        return res.data
+    }).then(err => {        
+        return err.data
+    })
+   /*  .catch(err => {
+        console.log(err)
+        return err.error
+       
+    }) */
+}
+
+
 
 export { 
     usuarioNovo, 
     usuarioGet, 
     usuarioIdGet, 
     usuarioGetByNome, 
-    usuarioUpdate
+    usuarioUpdate,
+    login
  }
