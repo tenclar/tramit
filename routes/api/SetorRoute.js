@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Sequelize = require("sequelize")
 const cors = require('cors')
-const Setor = require('../models/Setores')
+const Setor = require('../../models/Setores')
 router.use(cors())
 
 router.get('/', async(req, res) => {

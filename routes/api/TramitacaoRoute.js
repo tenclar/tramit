@@ -3,8 +3,8 @@ const router = express.Router()
 const cors = require('cors')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
-const Tramitacao = require('../models/Tramitacoes')
-const Documento = require('../models/Documentos')
+const Tramitacao = require('../../models/Tramitacoes')
+const Documento = require('../../models/Documentos')
 router.use(cors())
 
 
