@@ -8,22 +8,9 @@ app.use(cors())
 app.use(bodyParser.json({extended:true}))
 app.use(bodyParser.urlencoded({extended:false}))
 
+const routes = require('./routes')
+app.use(routes)
 
-
-const Usuarios = require('./routes/UsuarioRoute')
-app.use('/usuarios', Usuarios)
-
- const Setores = require('./routes/SetorRoute')
-app.use('/setores', Setores)
-
-const Doctipos = require('./routes/DoctipoRoute')
-app.use('/doctipos', Doctipos)
-
-const Tramitacoes = require('./routes/TramitacaoRoute')
-app.use('/tramitacoes', Tramitacoes)
-
-const Documentos = require('./routes/DocumentoRoute')
-app.use('/docs', Documentos)
 
 app.listen(port, err => {
     if(err){
