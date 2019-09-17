@@ -27,6 +27,8 @@ import TramitEdit from './tramite/TramitEdit'
 
 
 class Content extends Component {
+    
+
     render() {
         return (
             <div>
@@ -34,27 +36,27 @@ class Content extends Component {
             <Header />
               
             
-            <Route exact path='/' component={Home} />
-            <Route exact path='/setores/novo' component={SetorForm} />
-            <Route exact path='/setores/editar/:id' component={SetorEdit} />
-            <Route exact path='/setores' component={SetorList} />  
+            <Route exact path={`${this.props.match.path}/`} component={Home} />
+            <Route exact path={`${this.props.match.path}/setores/novo`} component={SetorForm} />
+            <Route exact path={`${this.props.match.path}/setores/editar/:id`} component={SetorEdit} />
+            <Route exact path={`${this.props.match.path}/setores`} component={SetorList} />  
 
-            <Route exact path='/usuarios/editar/:id' component={UsuarioEdit} />
-            <Route exact path='/usuarios/novo' component={UsuarioForm} />
-            <Route exact path='/usuarios' component={UsuarioList} /> 
+            <Route exact path={`${this.props.match.path}/usuarios/editar/:id`} component={UsuarioEdit} />
+            <Route exact path={`${this.props.match.path}/usuarios/novo`} component={UsuarioForm} />
+            <Route exact path={`${this.props.match.path}/usuarios`} component={UsuarioList} /> 
             
-            <Route exact path='/documentos' component={DocumentoList} /> 
-            <Route exact path='/documentos/novo' component={DocumentoForm} /> 
-            <Route exact path='/documentos/editar/:id' component={DocumentoEdit} /> 
+            <Route  path={`${this.props.match.path}/documentos`} component={DocumentoList} /> 
+            <Route exact path={`${this.props.match.path}/documentos/novo`} component={DocumentoForm} /> 
+            <Route exact path={`${this.props.match.path}/documentos/editar/:id`} component={DocumentoEdit} /> 
 
-            <Route exact path='/doctipos' component={DoctipoList} /> 
-            <Route exact path='/doctipos/novo' component={DoctipoForm} /> 
-            <Route exact path='/doctipos/editar/:id' component={DoctipoEdit} />
+            <Route exact path={`${this.props.match.path}/doctipos`} component={DoctipoList} /> 
+            <Route exact path={`${this.props.match.path}/doctipos/novo`} component={DoctipoForm} /> 
+            <Route exact path={`${this.props.match.path}/doctipos/editar/:id`} component={DoctipoEdit} />
             
-            <Route exact path='/tramite/novo' component={TramitNovo} />
-            <Route exact path='/tramite/editar/:id' component={TramitEdit} />
+            <Route exact path={`${this.props.match.path}/tramite/novo`} component={TramitNovo} />
+            <Route exact path={`${this.props.match.path}/tramite/editar/:id`} component={TramitEdit} />
             
-            <Route exact path='/tramite/analisar' component={TramitList} />
+            <Route exact path={`${this.props.match.path}/tramite/analisar`} component={TramitList} />
            
             </div> 
         )
