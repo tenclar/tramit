@@ -131,8 +131,13 @@ class UsuarioEdit extends Component {
         
 
           usuarioUpdate(this.state.fields).then(res => {
-
-                //this.setState({msg:res.error})
+            if(res.error){
+                this.setState({msg:res.error})
+            }else{
+                this.props.history.push('/usuarios')
+            }              
+            
+        
             
             })
         }

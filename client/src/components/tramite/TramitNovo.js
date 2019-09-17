@@ -298,9 +298,7 @@ class TramitForm extends Component {
                                 </div>
 
 
-                                {JSON.stringify(this.state.fields) } <br/>
-                                {JSON.stringify(this.state.documento)} <br />
-                                {JSON.stringify(errors)}
+                          
 
                                 <hr className="bg-default" />
                                 <button type="submit" className="btn btn-primary mr-1"  >Salvar</button>
